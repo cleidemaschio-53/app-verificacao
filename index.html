@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação de Vaga - Pandora</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animação de Fundo (Partículas/Spores do Avatar) -->
+    <div class="spores-background" id="sporesBg"></div>
+
+    <!-- Animação de Entrada (Splash/Intro) -->
+    <div id="introScreen" class="intro-screen">
+        <div class="intro-content">
+            <div class="intro-logo"></div>
+            <h1>PANDORA VAGAS</h1>
+            <p>Conectando à Rede Sagrada...</p>
+        </div>
+    </div>
+
+    <!-- Container Principal do Aplicativo -->
+    <div class="container glass-panel app-hidden" id="mainApp">
+        <div class="avatar-emblem"></div>
+        <h1>Portal de Alistamento</h1>
+        <form id="vagaForm">
+            <div class="input-group">
+                <label for="nome">Nome Completo</label>
+                <input type="text" id="nome" required placeholder="Ex: Jake Sully">
+            </div>
+
+            <div class="input-group">
+                <label for="idade">Idade</label>
+                <input type="number" id="idade" required min="0" placeholder="Ex: 22">
+            </div>
+
+            <div class="input-group">
+                <label for="altura">Altura (metros)</label>
+                <input type="number" id="altura" required step="0.01" min="0" placeholder="Ex: 1.75">
+            </div>
+
+            <button type="submit" class="neon-btn">Verificar Sincronia</button>
+        </form>
+    </div>
+
+    <!-- Janela Popup (Modal) para Resultado -->
+    <div id="resultModal" class="modal-overlay hidden">
+        <div class="modal-content glass-panel" id="modalBox">
+            <div id="modalIcon" class="modal-icon"></div>
+            <h2 id="modalTitle">Resultado da Sincronia</h2>
+            <p id="modalMessage"></p>
+            <button id="closeModalBtn" class="neon-btn">Continuar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

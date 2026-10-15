@@ -1,0 +1,283 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+}
+
+body {
+    background-color: #020b07;
+    background-image: radial-gradient(circle at 50% 20%, #052618 0%, #020b07 100%);
+    color: #e0f2fe;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Painel com efeito de Transparência / Glassmorphism */
+.glass-panel {
+    background: rgba(2, 20, 12, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4),
+                0 0 15px rgba(0, 255, 136, 0.15);
+    border-radius: 20px;
+    padding: 35px;
+    width: 100%;
+    max-width: 420px;
+    z-index: 10;
+}
+
+/* Animação de Fundo (Sementes/Voos estilo Avatar) */
+.spores-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.spore {
+    position: absolute;
+    background: radial-gradient(circle, #00ff88 0%, rgba(255, 0, 128, 0.8) 50%, transparent 80%);
+    border-radius: 50%;
+    animation: floatUp linear infinite;
+    opacity: 0.7;
+    box-shadow: 0 0 10px #00ff88, 0 0 20px #ff0080;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(105vh) translateX(0) scale(0.5);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.9;
+    }
+    80% {
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateY(-10vh) translateX(50px) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Animação de Entrada (Splash Screen) */
+.intro-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #020b07;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.intro-screen.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.intro-content {
+    text-align: center;
+    animation: pulseIntro 1.5s infinite alternate;
+}
+
+.intro-logo {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #00ff88 0%, #0055ff 70%);
+    box-shadow: 0 0 25px #00ff88, 0 0 50px #0055ff;
+}
+
+.intro-screen h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 26px;
+    color: #00ff88;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.8);
+    letter-spacing: 2px;
+}
+
+.intro-screen p {
+    color: #ff77aa;
+    margin-top: 8px;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+@keyframes pulseIntro {
+    0% { transform: scale(0.95); opacity: 0.8; }
+    100% { transform: scale(1.05); opacity: 1; }
+}
+
+/* Container Principal */
+#mainApp {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#mainApp.show-app {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.app-hidden {
+    display: none;
+}
+
+.avatar-emblem {
+    width: 45px;
+    height: 45px;
+    margin: 0 auto 15px;
+    background: radial-gradient(circle, #ff77aa 0%, #00ff88 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 15px #ff77aa, 0 0 25px #00ff88;
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 25px;
+    color: #00ff88;
+    text-shadow: 0 0 8px rgba(0, 255, 136, 0.6);
+}
+
+.input-group {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    color: #a7f3d0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(0, 255, 136, 0.4);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #00ff88;
+    box-shadow: 0 0 12px rgba(0, 255, 136, 0.6);
+}
+
+/* Botões com Néon */
+.neon-btn {
+    width: 100%;
+    padding: 13px;
+    background: linear-gradient(135deg, #00ff88 0%, #00bfff 100%);
+    color: #020b07;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+    transition: all 0.3s ease;
+    margin-top: 5px;
+}
+
+.neon-btn:hover {
+    background: linear-gradient(135deg, #00ffaa 0%, #00d2ff 100%);
+    box-shadow: 0 0 25px rgba(0, 255, 136, 0.8), 0 0 10px #ff77aa;
+    transform: translateY(-2px);
+}
+
+/* Janela Popup (Modal) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(1, 7, 4, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+.modal-content {
+    text-align: center;
+    transform: scale(0.8);
+    animation: modalPopUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes modalPopUp {
+    to {
+        transform: scale(1);
+    }
+}
+
+.modal-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+}
+
+.modal-content h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.modal-content p {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    color: #d1fae5;
+}
+
+/* Estilos de Sucesso e Erro no Modal */
+.modal-content.sucesso .modal-icon {
+    background: radial-gradient(circle, #00ff88 0%, #0055ff 100%);
+    box-shadow: 0 0 20px #00ff88;
+}
+.modal-content.sucesso h2 {
+    color: #00ff88;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
+}
+
+.modal-content.erro .modal-icon {
+    background: radial-gradient(circle, #ff77aa 0%, #ff0055 100%);
+    box-shadow: 0 0 20px #ff77aa;
+}
+.modal-content.erro h2 {
+    color: #ff77aa;
+    text-shadow: 0 0 10px rgba(255, 119, 170, 0.6);
+}
+
+.hidden {
+    display: none !important;
+}
